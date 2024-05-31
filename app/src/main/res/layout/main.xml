@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pozadie" >
+    <!-- android:src="res/drawable/uvod"-->
+
+
+ </ImageView>
+ <Button
+     android:id="@+id/button"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Spusti Hru" />
+
+ <Button
+     android:id="@+id/button2"
+     android:layout_width="match_parent"
+     android:layout_height="102dp"
+     android:text="X" />
+
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Vitaj"
+     android:textSize="24dp"
+     android:layout_marginTop="16dp"
+     android:layout_marginStart="160dp"
+     android:layout_marginEnd="16dp" />
+</LinearLayout>
