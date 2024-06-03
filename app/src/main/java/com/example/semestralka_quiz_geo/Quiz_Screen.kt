@@ -1,8 +1,6 @@
 package com.example.semestralka_quiz_geo
 
-import android.view.Surface
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,10 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-
-
 @Composable
-fun Hl_menu(navController: NavController) {
+fun Quiz_Screen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.pozadie2),
@@ -34,46 +30,31 @@ fun Hl_menu(navController: NavController) {
             modifier = Modifier.matchParentSize()
         )
     }
-
-    Text(text = " ' Uživateľ ' ", fontSize = 24.sp, color = Color.Black,
-        modifier = Modifier.padding(top = 48.dp)
-            .padding(start = 16.dp)
-            .background(Color.White)
-    )
-
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        item {
+            Box(modifier = Modifier.fillMaxWidth(0.7f),
+                //verticalArrangement = Arrangement.Center,
+            )
+        }
+        item {
+            Button(onClick = { /*TODO*/ }) {
 
-        item {
-            Button(onClick = {
-                navController.navigate("Quiz_Screen")
-            }) {
-                Text(text = "Spusti Quiz", fontSize = 16.sp)
             }
         }
         item {
             Button(
                 onClick = {
-                    navController.navigate("Encyklopedia")
-                },
-            ) {
-                Text(text = "Encyklopédia", fontSize = 16.sp)
-            }
-        }
-        item {
-            Button(
-                onClick = {
-                    navController.navigate("Nastavenia")
+                    navController.navigate("Quiz_Screen")
                 },
                 modifier = Modifier.padding(bottom = 48.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black)
+                colors = ButtonDefaults.buttonColors(Color.Green)
             ) {
-                Text(text = "Nastavenia", fontSize = 16.sp)
+                Text(text = "Sabubo", fontSize = 16.sp)
             }
         }
     }
 }
-
