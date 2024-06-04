@@ -1,4 +1,4 @@
-package com.example.semestralka_quiz_geo
+package com.example.semestralka_quiz_geo.Obrazovky
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.semestralka_quiz_geo.R
 
 @Composable
 fun Quiz_Screen(navController: NavController) {

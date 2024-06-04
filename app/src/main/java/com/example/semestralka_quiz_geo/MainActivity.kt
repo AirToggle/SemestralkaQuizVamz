@@ -23,6 +23,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.semestralka_quiz_geo.Obrazovky.Encyklopedia
+import com.example.semestralka_quiz_geo.Obrazovky.Hl_menu
+import com.example.semestralka_quiz_geo.Obrazovky.Nastavenia
+import com.example.semestralka_quiz_geo.Obrazovky.Quiz_Screen
 
 
 class MainActivity : AppCompatActivity() {

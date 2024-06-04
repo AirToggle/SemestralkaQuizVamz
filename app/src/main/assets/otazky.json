@@ -1,0 +1,136 @@
+[{
+  "question": "Ktorá krajina je Albánsko",
+  "image_url": "question_mark.png",
+  "A": "albansko.png",
+  "B": "chorvatsko.png",
+  "C": "grecko.png",
+  "D": "portugalsko.png",
+  "answer": "A",
+  "type": "MAP_PICK"
+}, {
+  "question": "Ktorá krajina je Bielorusko",
+  "image_url": "question_mark.png",
+  "A": "polsko.png",
+  "B": "bielorusko.png",
+  "C": "rakusko.png",
+  "D": "lotyssko.png",
+  "answer": "B",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Chorvátsko",
+  "image_url": "question_mark.png",
+  "A": "portugalsko.png",
+  "B": "grecko.png",
+  "C": "chorvatsko.png",
+  "D": "macedonsko.png",
+  "answer": "C",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Dánsko",
+  "image_url": "question_mark.png",
+  "A": "lotyssko.png",
+  "B": "svedsko.png",
+  "C": "moldavsko.png",
+  "D": "dansko.png",
+  "answer": "D",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Francuzsko",
+  "image_url": "question_mark.png",
+  "A": "franzusko.png",
+  "B": "portugalsko.png",
+  "C": "polsko.png",
+  "D": "spanielsko.png",
+  "answer": "A",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Grécko",
+  "image_url": "question_mark.png",
+  "A": "albansko.png",
+  "B": "grecko.png",
+  "C": "chorvatsko.png",
+  "D": "portugalsko.png",
+  "answer": "B",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Írsko",
+  "image_url": "question_mark.png",
+  "A": "polsko.png",
+  "B": "rakusko.png",
+  "C": "irsko.png",
+  "D": "portugalsko.png",
+  "answer": "C",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Lotyšsko",
+  "image_url": "question_mark.png",
+  "A": "svedsko.png",
+  "B": "albansko.png",
+  "C": "rakusko.png",
+  "D": "Lotyšsko.png",
+  "answer": "D",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Macedonsko",
+  "image_url": "question_mark.png",
+  "A": "macedonsko.png",
+  "B": "dansko.png",
+  "C": "chorvatsko.png",
+  "D": "polsko.png",
+  "answer": "A",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Moldavsko",
+  "image_url": "question_mark.png",
+  "A": "macedonsko.png",
+  "B": "moldavsko.png",
+  "C": "grecko.png",
+  "D": "spanielsko.png",
+  "answer": "B",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Polsko",
+  "image_url": "question_mark.png",
+  "A": "portugalsko.png",
+  "B": "bielorusko.png",
+  "C": "Polsko.png",
+  "D": "rakusko.png",
+  "answer": "C",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Portugalsko",
+  "image_url": "question_mark.png",
+  "A": "spanielsko.png",
+  "B": "irsko.png",
+  "C": "francuzsko.png",
+  "D": "portugalsko.png",
+  "answer": "D",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Rakusko",
+  "image_url": "question_mark.png",
+  "A": "rakusko.png",
+  "B": "francuzsko.png",
+  "C": "lotyssko.png",
+  "D": "dansko.png",
+  "answer": "A",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Spanielsko",
+  "image_url": "question_mark.png",
+  "A": "francuzsko.png",
+  "B": "spanielsko.png",
+  "C": "rakusko.png",
+  "D": "dansko.png",
+  "answer": "B",
+  "type": "MAP_PICK"
+},{
+  "question": "Ktorá krajina je Svedsko",
+  "image_url": "question_mark.png",
+  "A": "dansko.png",
+  "B": "lotyssko.png",
+  "C": "svedsko.png",
+  "D": "bielorusko.png",
+  "answer": "C",
+  "type": "MAP_PICK"
+}]
