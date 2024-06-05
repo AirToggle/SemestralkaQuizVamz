@@ -26,9 +26,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.semestralka_quiz_geo.R
+import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 
 @Composable
-fun Quiz_Screen(navController: NavController) {
+fun Quiz_Screen(navController: NavController , uzivatel : UzivatelData = UzivatelData()) {
     val configuration = LocalConfiguration.current
     val isPortrait =
         configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT

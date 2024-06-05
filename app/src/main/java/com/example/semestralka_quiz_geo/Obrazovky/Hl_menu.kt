@@ -21,12 +21,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.semestralka_quiz_geo.NacitajOtazky
+import com.example.semestralka_quiz_geo.Otazka.NacitajOtazky
 import com.example.semestralka_quiz_geo.R
+import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 
 
 @Composable
-fun Hl_menu(navController: NavController) {
+fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData()) {
     val context = LocalContext.current
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -37,7 +38,7 @@ fun Hl_menu(navController: NavController) {
         )
     }
 
-    Text(text = " ' Uživateľ ' ", fontSize = 24.sp, color = Color.Black,
+    Text(text = uzivatel.name , fontSize = 24.sp, color = Color.Black,
         modifier = Modifier.padding(top = 48.dp)
             .padding(start = 16.dp)
             .background(Color.White)

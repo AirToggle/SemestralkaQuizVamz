@@ -28,25 +28,35 @@ import com.example.semestralka_quiz_geo.Obrazovky.Encyklopedia
 import com.example.semestralka_quiz_geo.Obrazovky.Hl_menu
 import com.example.semestralka_quiz_geo.Obrazovky.Nastavenia
 import com.example.semestralka_quiz_geo.Obrazovky.Quiz_Screen
+import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val uzivatel = UzivatelData()
+        CoroutineScope(Dispatchers.Main).launch {
+            UzivatelData.nacitatUdaje(this@MainActivity)
+            uzivatel.zmenitMeno("miro",this@MainActivity)
+            uzivatel.ulozitUdaje(this@MainActivity)
+        }
         super.onCreate(savedInstanceState)
         setContent {
             val novControllerr = rememberNavController()
             NavHost(navController = novControllerr, startDestination = "obrazovka") {
-                composable("Obrazovka") { Obrazovka(novControllerr) }
-                composable("Hl_menu") { Hl_menu(novControllerr) }
-                composable("Quiz_Screen") { Quiz_Screen(novControllerr) }
+                composable("Obrazovka") { Obrazovka(novControllerr,uzivatel) }
+                composable("Hl_menu") { Hl_menu(novControllerr, uzivatel) }
+                composable("Quiz_Screen") { Quiz_Screen(novControllerr, uzivatel) }
                 composable("Encyklopedia") { Encyklopedia(novControllerr) }
-                composable("Nastavenia") { Nastavenia(novControllerr) }
+                composable("Nastavenia") { Nastavenia(novControllerr, uzivatel) }
             }
         }
     }
 }
 
 @Composable
-fun Obrazovka(navController: NavController) {
+fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelData()) {
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
     Box(modifier = Modifier.fillMaxSize()) {
@@ -64,7 +74,7 @@ fun Obrazovka(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            Text(text = "Vitaj ' uživateľ '", fontSize = 32.sp)
+            Text(text = "Vitaj " + uzivatel.name, fontSize = 32.sp)
         }
             item {
             Button(

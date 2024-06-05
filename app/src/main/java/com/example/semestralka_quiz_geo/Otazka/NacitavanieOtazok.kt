@@ -1,4 +1,4 @@
-package com.example.semestralka_quiz_geo
+package com.example.semestralka_quiz_geo.Otazka
 
 import android.content.Context
 import android.content.res.AssetManager

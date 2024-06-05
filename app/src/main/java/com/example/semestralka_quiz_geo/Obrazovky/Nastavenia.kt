@@ -19,11 +19,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import com.example.semestralka_quiz_geo.R
-
+import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 
 
 @Composable
-fun Nastavenia(navController: NavController) {
+fun Nastavenia(navController: NavController, uzivatel : UzivatelData = UzivatelData()) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.pozadie2),
