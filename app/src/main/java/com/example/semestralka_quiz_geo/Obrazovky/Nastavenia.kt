@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import com.example.semestralka_quiz_geo.R
 
-//import androidx.compose.foundation.layout.BoxScopeInstance.align
 
 
 @Composable

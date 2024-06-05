@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
 import com.example.semestralka_quiz_geo.NacitajOtazky
 import com.example.semestralka_quiz_geo.R
@@ -49,6 +48,16 @@ fun Hl_menu(navController: NavController) {
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        item {
+            Text(
+                text = "Štatistiky",
+                fontSize = 18.sp,
+                color = Color.Black,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .background(Color.White)
+            )
+        }
 
         item {
             Button(onClick = {
@@ -72,17 +81,18 @@ fun Hl_menu(navController: NavController) {
                 onClick = {
                     navController.navigate("Nastavenia")
                 },
-                modifier = Modifier.padding(bottom = 48.dp),
+                //modifier = Modifier.padding(bottom = 48.dp),
                 colors = ButtonDefaults.buttonColors(Color.Black)
             ) {
                 Text(text = "Nastavenia", fontSize = 16.sp)
             }
-
+        }
+        item {
             Button(
                 onClick = {
                     (context as? Activity)?.finishAffinity()
                 },
-                modifier = Modifier.padding(bottom = 48.dp),
+                //modifier = Modifier.padding(bottom = 48.dp),
                 colors = ButtonDefaults.buttonColors(Color.Red)
             ) {
                 Text(text = "Ukonči", fontSize = 16.sp)

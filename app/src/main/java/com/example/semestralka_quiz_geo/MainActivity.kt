@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,14 +29,13 @@ import com.example.semestralka_quiz_geo.Obrazovky.Hl_menu
 import com.example.semestralka_quiz_geo.Obrazovky.Nastavenia
 import com.example.semestralka_quiz_geo.Obrazovky.Quiz_Screen
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val novControllerr = rememberNavController()
             NavHost(navController = novControllerr, startDestination = "obrazovka") {
-                composable("obrazovka") { obrazovka(novControllerr) }
+                composable("Obrazovka") { Obrazovka(novControllerr) }
                 composable("Hl_menu") { Hl_menu(novControllerr) }
                 composable("Quiz_Screen") { Quiz_Screen(novControllerr) }
                 composable("Encyklopedia") { Encyklopedia(novControllerr) }
@@ -46,7 +46,9 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun obrazovka(navController: NavController) {
+fun Obrazovka(navController: NavController) {
+    val configuration = LocalConfiguration.current
+    val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.pozadie1),
@@ -57,12 +59,12 @@ fun obrazovka(navController: NavController) {
     }
     LazyColumn(
         modifier = Modifier.fillMaxSize()
-        .padding(top = 64.dp),
+            .padding(top = if (isPortrait) 64.dp else 16.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            Text(text = "Vitaj ' uživateľ '", fontSize = 32.sp,)
+            Text(text = "Vitaj ' uživateľ '", fontSize = 32.sp)
         }
             item {
             Button(
@@ -82,6 +84,6 @@ fun obrazovka(navController: NavController) {
 
     @Preview(showBackground = true)
     @Composable
-    fun obrazovkaPreview() {
-        obrazovka(navController = rememberNavController())
+    fun ObrazovkaPreview() {
+        Obrazovka(navController = rememberNavController())
     }
