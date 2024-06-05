@@ -42,14 +42,42 @@ fun Quiz_Screen(navController: NavController) {
             )
         }
         item {
-            Button(onClick = { /*TODO*/ }) {
+            Button(
+                onClick = {
 
+                },
+                modifier = Modifier.padding(bottom = 48.dp),
+                colors = ButtonDefaults.buttonColors(Color.Green)
+            ) {
+                Text(text = "Sabubo", fontSize = 16.sp)
             }
         }
         item {
             Button(
                 onClick = {
-                    navController.navigate("Quiz_Screen")
+
+                },
+                modifier = Modifier.padding(bottom = 48.dp),
+                colors = ButtonDefaults.buttonColors(Color.Green)
+            ) {
+                Text(text = "Sabubo", fontSize = 16.sp)
+            }
+        }
+        item {
+            Button(
+                onClick = {
+
+                },
+                modifier = Modifier.padding(bottom = 48.dp),
+                colors = ButtonDefaults.buttonColors(Color.Green)
+            ) {
+                Text(text = "Sabubo", fontSize = 16.sp)
+            }
+        }
+        item {
+            Button(
+                onClick = {
+
                 },
                 modifier = Modifier.padding(bottom = 48.dp),
                 colors = ButtonDefaults.buttonColors(Color.Green)

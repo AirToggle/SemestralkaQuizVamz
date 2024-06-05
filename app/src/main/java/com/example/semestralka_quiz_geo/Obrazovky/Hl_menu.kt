@@ -20,7 +20,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
+import com.example.semestralka_quiz_geo.NacitajOtazky
 import com.example.semestralka_quiz_geo.R
 
 
@@ -50,6 +52,7 @@ fun Hl_menu(navController: NavController) {
 
         item {
             Button(onClick = {
+                NacitajOtazky(context)
                 navController.navigate("Quiz_Screen")
             }) {
                 Text(text = "Spusti Quiz", fontSize = 16.sp)
