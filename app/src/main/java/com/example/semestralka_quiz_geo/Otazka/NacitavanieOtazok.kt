@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.AssetManager
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.semestralka_quiz_geo.ui.theme.Test
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

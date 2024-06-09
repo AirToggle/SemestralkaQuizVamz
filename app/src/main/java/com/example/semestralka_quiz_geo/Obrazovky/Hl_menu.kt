@@ -38,7 +38,7 @@ fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData
         )
     }
 
-    Text(text = uzivatel.name , fontSize = 24.sp, color = Color.Black,
+    Text(text = "Štatistiky hráča: " + uzivatel.name  + "\n počet Otázok: " + uzivatel.pocetOtazok + "\n počet správnych otázok: " + uzivatel.pocetSpravnychOtazok + "\n počet stráveny v quize: " + uzivatel.celkovyCas, fontSize = 16.sp, color = Color.Black,
         modifier = Modifier.padding(top = 48.dp)
             .padding(start = 16.dp)
             .background(Color.White)
@@ -50,14 +50,7 @@ fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            Text(
-                text = "Štatistiky",
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-                    .background(Color.White)
-            )
+            
         }
 
         item {

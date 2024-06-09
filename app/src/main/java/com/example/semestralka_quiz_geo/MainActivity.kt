@@ -97,3 +97,4 @@ fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelDa
     fun ObrazovkaPreview() {
         Obrazovka(navController = rememberNavController())
     }
+
