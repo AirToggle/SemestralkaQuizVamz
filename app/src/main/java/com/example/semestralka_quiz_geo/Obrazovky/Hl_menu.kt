@@ -26,9 +26,11 @@ import com.example.semestralka_quiz_geo.R
 import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 
 
+
 @Composable
 fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData()) {
     val context = LocalContext.current
+
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.pozadie2),
