@@ -14,12 +14,25 @@ interface UzivatelDao {
     @Update
     suspend fun update(uzivatel: UzivatelData)
 
+
     @Query("SELECT * FROM uzivatelData LIMIT 1")
     suspend fun getUzivatel(): UzivatelData?
 
-    @Query("SELECT * FROM uzivatelData where id = 0")
-    suspend fun getUzivatel0(): UzivatelData?
+    @Query("SELECT * FROM uzivatelData where id = 3")
+    suspend fun getUzivatel1(): UzivatelData?
 
     @Query("DELETE FROM uzivatelData")
     suspend fun deleteAll()
+
+    @Query("update uzivatelData set name = :newName where id = 1")
+    suspend fun updateName(newName: String)
+
+    @Query("update uzivatelData set pocetOtazok = :newPocetOtazok where id = 1")
+    suspend fun updatePocetOtazok(newPocetOtazok: Int)
+
+    @Query("update uzivatelData set pocetSpravnychOtazok = :newPocetSpravnychOtazok where id = 1")
+    suspend fun updatePocetSpravnychOtazok(newPocetSpravnychOtazok: Int)
+
+    @Query("update uzivatelData set celkovyCas = :newCelkovyCas where id = 1")
+    suspend fun updateCelkovyCas(newCelkovyCas: Int)
 }

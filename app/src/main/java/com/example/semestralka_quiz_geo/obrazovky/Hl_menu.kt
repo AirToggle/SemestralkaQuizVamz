@@ -40,11 +40,6 @@ fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData
         )
     }
 
-    Text(text = "Štatistiky hráča: " + uzivatel.name  + "\n počet Otázok: " + uzivatel.pocetOtazok + "\n počet správnych otázok: " + uzivatel.pocetSpravnychOtazok + "\n počet stráveny v quize: " + uzivatel.celkovyCas, fontSize = 16.sp, color = Color.Black,
-        modifier = Modifier.padding(top = 48.dp)
-            .padding(start = 16.dp)
-            .background(Color.White)
-    )
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -61,6 +56,14 @@ fun Hl_menu(navController: NavController, uzivatel : UzivatelData = UzivatelData
                 navController.navigate("Quiz_Screen")
             }) {
                 Text(text = "Spusti Quiz", fontSize = 16.sp)
+            }
+        }
+        item {
+            Button(onClick = {
+                NacitajOtazky(context)
+                navController.navigate("Statistiky")
+            }) {
+                Text(text = "Štatistiky", fontSize = 16.sp)
             }
         }
         item {

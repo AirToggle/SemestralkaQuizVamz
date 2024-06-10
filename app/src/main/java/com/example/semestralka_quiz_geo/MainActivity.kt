@@ -1,5 +1,8 @@
 package com.example.semestralka_quiz_geo
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.compose.ui.Modifier
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -15,11 +18,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,14 +36,33 @@ import com.example.semestralka_quiz_geo.obrazovky.Nastavenia
 import com.example.semestralka_quiz_geo.obrazovky.Quiz_Screen
 import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 import com.example.semestralka_quiz_geo.obrazovky.ResultScreen
+import com.example.semestralka_quiz_geo.obrazovky.Statistiky
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         var uzivatel = UzivatelData()
         val notifikacnyKanal = Notifikacia()
+        val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+        setContent {
+            val context = this@MainActivity
+            val hasNotificationPermission = remember {
+                mutableStateOf(
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        ContextCompat.checkSelfPermission(
+                            context,
+                            android.Manifest.permission.POST_NOTIFICATIONS
+                        ) == PackageManager.PERMISSION_GRANTED
+                    } else {
+                        true
+                    }
+                )
+            }
+        }
+        val RC_NOTIFICATION = 99
 
         notifikacnyKanal.createNotificationChannel(this)
         CoroutineScope(Dispatchers.Main).launch {
@@ -49,8 +74,17 @@ class MainActivity : AppCompatActivity() {
              */
         }
         uzivatel = UzivatelData()
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), RC_NOTIFICATION)
+        }
+
+
         super.onCreate(savedInstanceState)
         setContent {
+
             val novControllerr = rememberNavController()
             NavHost(navController = novControllerr, startDestination = "obrazovka") {
                 composable("Obrazovka") { Obrazovka(novControllerr,uzivatel) }
@@ -59,6 +93,7 @@ class MainActivity : AppCompatActivity() {
                 composable("Encyklopedia") { Encyklopedia(novControllerr) }
                 composable("Nastavenia") { Nastavenia(novControllerr, uzivatel) }
                 composable("ResultScreen") { ResultScreen(novControllerr) }
+                composable("Statistiky") { Statistiky(novControllerr, uzivatel) }
             }
         }
     }
@@ -101,10 +136,10 @@ fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelDa
 
 
 
-
     @Preview(showBackground = true)
     @Composable
     fun ObrazovkaPreview() {
         Obrazovka(navController = rememberNavController())
     }
+
 

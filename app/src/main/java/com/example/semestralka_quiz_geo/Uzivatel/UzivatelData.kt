@@ -31,7 +31,8 @@ data class UzivatelData(
     companion object {
         suspend fun nacitatUdaje(context: Context): UzivatelData? {
 
-            return UzivatelDB.getInstance(context).uzivatelDao().getUzivatel0()
+
+            return UzivatelDB.getInstance(context).uzivatelDao().getUzivatel1()
 
         }
     }
@@ -51,22 +52,31 @@ data class UzivatelData(
 
     suspend fun zmenitMeno(noveMeno: String, context: Context) {
         this.name = noveMeno
-        aktualizovatUdaje(context)
+        val uzivatelDao = UzivatelDB.getInstance(context).uzivatelDao()
+        uzivatelDao.updateName(noveMeno)
+
     }
 
 
     suspend fun pridajPocetOtazok(context: Context) {
         this.pocetOtazok++
+        val uzivatelDao = UzivatelDB.getInstance(context).uzivatelDao()
+        uzivatelDao.updatePocetOtazok(this.pocetOtazok)
     }
 
 
     suspend fun pridajPocetSpravnychOtazok(context: Context) {
         this.pocetSpravnychOtazok++
-        this.pocetOtazok++
+        //this.pocetOtazok++
+        pridajPocetOtazok(context)
+        val uzivatelDao = UzivatelDB.getInstance(context).uzivatelDao()
+        uzivatelDao.updatePocetSpravnychOtazok(this.pocetSpravnychOtazok)
     }
 
 
     suspend fun pridajCelkovyCas(context: Context) {
         this.celkovyCas++
+        val uzivatelDao = UzivatelDB.getInstance(context).uzivatelDao()
+        uzivatelDao.updateCelkovyCas(this.celkovyCas)
     }
 }

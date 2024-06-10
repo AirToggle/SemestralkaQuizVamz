@@ -85,10 +85,10 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                 keyboardActions = KeyboardActions(onDone = {
                     uzivatel.name = text
                     CoroutineScope(Dispatchers.IO).launch {
-                        uzivatel.aktualizovatUdaje(contextt)
+                        uzivatel.zmenitMeno(text,contextt)
                     }
                     currentFocus.clearFocus()
-                    Notifikacia(contextt, text, true)
+                    Notifikacia(contextt, text, 1)
                 }),
                 visualTransformation = VisualTransformation.None
             )
@@ -99,10 +99,10 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                     onClick = {
                         uzivatel.name = text
                         CoroutineScope(Dispatchers.IO).launch {
-                            uzivatel.aktualizovatUdaje(contextt)
+                            uzivatel.zmenitMeno(text,contextt)
                         }
                         currentFocus.clearFocus()
-                        Notifikacia(contextt, text, true)
+                        Notifikacia(contextt, text, 1)
                     }
                 ) {
                     Text(text = "Uložiť meno", fontSize = 16.sp, color = Color.Black)
@@ -110,14 +110,25 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
             }
         }
         item {
+            Button(colors = ButtonDefaults.buttonColors(Color.Blue),
+                onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        uzivatel.ulozitUdaje(contextt)
+                        Notifikacia(contextt, "", 2)
+                    }
+                }) {
+                Text(text = "Vytvor uživatela", fontSize = 16.sp)
+            }
+        }
+        item {
             Button(colors = ButtonDefaults.buttonColors(Color.Red),
                 onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
-                    uzivatel.resetovatUdaje(context = contextt)
-                    Notifikacia(contextt, "", false)
+                    uzivatel.vymazatUdaje(contextt)
+                    Notifikacia(contextt, "", 3)
                 }
             }) {
-                Text(text = "Reštartuj uživatela", fontSize = 16.sp)
+                Text(text = "Vymaž databázu", fontSize = 16.sp)
             }
         }
         item {
@@ -132,15 +143,17 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
 }
 
 
-fun Notifikacia(context: Context, newName: String, boolName: Boolean) {
+fun Notifikacia(context: Context, newName: String, int: Int) {
     val builder = NotificationCompat.Builder(context, "notif")
         .setSmallIcon(R.drawable.pozadie1)
         .setContentTitle("Aktualizácia užívateľa")
         .apply {
-            if (boolName) {
+            if (int == 1) {
                 setContentText("Úspešne si zmenil meno na: $newName!")
-            } else {
-                setContentText("Úspešne si resetoval užívateľa")
+            } else if (int == 2) {
+                setContentText("Úspešne si vytvoril užívateľa")
+            } else if (int == 3) {
+                setContentText("Úspešne si resetoval uživatela")
             }
         }
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)

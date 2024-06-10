@@ -40,9 +40,18 @@ fun ResultScreen(navController: NavController) {
                     fontSize = 24.sp,
                     color = Color.Black,
                     modifier = Modifier
-                        //.align(Alignment.Center)
                         .background(Color.White)
                 )
+
+        }
+        item {
+            Text(
+                text = " Výsledky ",
+                fontSize = 24.sp,
+                color = Color.Black,
+                modifier = Modifier
+                    .background(Color.White)
+            )
 
         }
         item {
