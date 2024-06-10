@@ -1,4 +1,4 @@
-package com.example.semestralka_quiz_geo.Obrazovky
+package com.example.semestralka_quiz_geo.obrazovky
 
 import android.app.Activity
 import androidx.compose.foundation.Image

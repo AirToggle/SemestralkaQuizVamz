@@ -1,9 +1,5 @@
 package com.example.semestralka_quiz_geo
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.os.Build
 import androidx.compose.ui.Modifier
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -19,38 +15,31 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.semestralka_quiz_geo.Obrazovky.Encyklopedia
-import com.example.semestralka_quiz_geo.Obrazovky.Hl_menu
-import com.example.semestralka_quiz_geo.Obrazovky.Nastavenia
-import com.example.semestralka_quiz_geo.Obrazovky.Quiz_Screen
+import com.example.semestralka_quiz_geo.obrazovky.Encyklopedia
+import com.example.semestralka_quiz_geo.obrazovky.Hl_menu
+import com.example.semestralka_quiz_geo.obrazovky.Nastavenia
+import com.example.semestralka_quiz_geo.obrazovky.Quiz_Screen
 import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
+import com.example.semestralka_quiz_geo.obrazovky.ResultScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         var uzivatel = UzivatelData()
         val notifikacnyKanal = Notifikacia()
+
         notifikacnyKanal.createNotificationChannel(this)
-
-
         CoroutineScope(Dispatchers.Main).launch {
             UzivatelData.nacitatUdaje(this@MainActivity)
             /*
@@ -59,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
              */
         }
+        uzivatel = UzivatelData()
         super.onCreate(savedInstanceState)
         setContent {
             val novControllerr = rememberNavController()
@@ -68,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 composable("Quiz_Screen") { Quiz_Screen(novControllerr, uzivatel) }
                 composable("Encyklopedia") { Encyklopedia(novControllerr) }
                 composable("Nastavenia") { Nastavenia(novControllerr, uzivatel) }
+                composable("ResultScreen") { ResultScreen(novControllerr) }
             }
         }
     }

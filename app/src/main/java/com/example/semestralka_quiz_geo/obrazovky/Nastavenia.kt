@@ -1,4 +1,4 @@
-package com.example.semestralka_quiz_geo.Obrazovky
+package com.example.semestralka_quiz_geo.obrazovky
 
 import android.Manifest
 import android.content.Context
@@ -85,7 +85,7 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                 keyboardActions = KeyboardActions(onDone = {
                     uzivatel.name = text
                     CoroutineScope(Dispatchers.IO).launch {
-                        uzivatel.ulozitUdaje(contextt)
+                        uzivatel.aktualizovatUdaje(contextt)
                     }
                     currentFocus.clearFocus()
                     Notifikacia(contextt, text, true)
@@ -99,7 +99,7 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                     onClick = {
                         uzivatel.name = text
                         CoroutineScope(Dispatchers.IO).launch {
-                            uzivatel.ulozitUdaje(contextt)
+                            uzivatel.aktualizovatUdaje(contextt)
                         }
                         currentFocus.clearFocus()
                         Notifikacia(contextt, text, true)
@@ -122,7 +122,8 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
         }
         item {
             Button(onClick = {
-                navController.navigate("Hl_menu")
+
+                navController.popBackStack()
             }) {
                 Text(text = "Späť", fontSize = 16.sp)
             }

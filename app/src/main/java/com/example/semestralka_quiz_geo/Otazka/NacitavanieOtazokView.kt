@@ -11,7 +11,7 @@ class NacitavanieOtazok : ViewModel() {
 
 }
 
-fun NacitajOtazky(context: Context): Test? {
+fun NacitajOtazky(context: Context): List<Otazka> {
     try {
         val assetManager: AssetManager = context.assets
         val inputStream = assetManager.open("otazky.json")
@@ -23,9 +23,9 @@ fun NacitajOtazky(context: Context): Test? {
             println("Answer: ${question.answer}")
         }
         inputStream.close()
-        return null
+        return questions
     } catch(e: Exception) {
         Log.e("LoadTest", "Error reading test file: $e")
-        return null
+        return emptyList()
     }
 }
