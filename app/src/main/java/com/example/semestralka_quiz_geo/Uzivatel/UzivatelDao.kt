@@ -21,6 +21,9 @@ interface UzivatelDao {
     @Query("SELECT * FROM uzivatelData where id = 3")
     suspend fun getUzivatel1(): UzivatelData?
 
+    @Query("SELECT * FROM uzivatelData WHERE id = (SELECT MAX(id) FROM uzivatelData)")
+    suspend fun getUzivatelWithMaxId(): UzivatelData?
+
     @Query("DELETE FROM uzivatelData")
     suspend fun deleteAll()
 

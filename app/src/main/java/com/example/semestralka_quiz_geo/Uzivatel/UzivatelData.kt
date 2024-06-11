@@ -30,10 +30,29 @@ data class UzivatelData(
 
     companion object {
         suspend fun nacitatUdaje(context: Context): UzivatelData? {
-
-
             return UzivatelDB.getInstance(context).uzivatelDao().getUzivatel1()
+        }
 
+        suspend fun nacitatUdajeMax(context: Context): UzivatelData? {
+            return UzivatelDB.getInstance(context).uzivatelDao().getUzivatelWithMaxId()
+        }
+
+        suspend fun nacitatMeno(context: Context): String? {
+            val nieco = UzivatelDB.getInstance(context).uzivatelDao().getUzivatelWithMaxId()
+            return nieco?.name
+        }
+
+        suspend fun nacitatPocetOtazok(context: Context): Int? {
+            val nieco = UzivatelDB.getInstance(context).uzivatelDao().getUzivatelWithMaxId()
+            return nieco?.pocetOtazok
+        }
+        suspend fun nacitatPocetSpravnychOtazok(context: Context): Int? {
+            val nieco = UzivatelDB.getInstance(context).uzivatelDao().getUzivatelWithMaxId()
+            return nieco?.pocetSpravnychOtazok
+        }
+        suspend fun nacitatCas(context: Context): Int? {
+            val nieco = UzivatelDB.getInstance(context).uzivatelDao().getUzivatelWithMaxId()
+            return nieco?.celkovyCas
         }
     }
 

@@ -42,6 +42,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    object Global {
+        var NevytvorenyUzivatel: Boolean = false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         var uzivatel = UzivatelData()
@@ -66,15 +69,32 @@ class MainActivity : AppCompatActivity() {
 
         notifikacnyKanal.createNotificationChannel(this)
         CoroutineScope(Dispatchers.Main).launch {
-            UzivatelData.nacitatUdaje(this@MainActivity)
+            if (null != UzivatelData.nacitatUdajeMax(this@MainActivity)) {
+                Global.NevytvorenyUzivatel = true
+            }
+        }
+        CoroutineScope(Dispatchers.Main).launch {
+            if (!Global.NevytvorenyUzivatel) {
+                UzivatelData.nacitatUdaje(this@MainActivity)
+            } else {
+                uzivatel = UzivatelData.nacitatUdajeMax(this@MainActivity)!!
+                uzivatel.name = UzivatelData.nacitatMeno(this@MainActivity)!!
+                uzivatel.celkovyCas = UzivatelData.nacitatCas(this@MainActivity)!!
+                uzivatel.pocetOtazok = UzivatelData.nacitatPocetOtazok(this@MainActivity)!!
+                uzivatel.pocetSpravnychOtazok = UzivatelData.nacitatPocetSpravnychOtazok(this@MainActivity)!!
+            }
             /*
+
             uzivatel.zmenitMeno("miro",this@MainActivity)
             uzivatel.ulozitUdaje(this@MainActivity)
+            //uzivatel.id
 
-             */
+            */
         }
-        uzivatel = UzivatelData()
 
+        if (!Global.NevytvorenyUzivatel) {
+            uzivatel = UzivatelData()
+        }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
@@ -97,6 +117,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }
 
 @Composable

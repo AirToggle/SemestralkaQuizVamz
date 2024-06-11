@@ -46,7 +46,8 @@ fun Statistiky(navController: NavController, uzivatel: UzivatelData = UzivatelDa
 }
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
+            .padding(top = 48.dp),
         verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

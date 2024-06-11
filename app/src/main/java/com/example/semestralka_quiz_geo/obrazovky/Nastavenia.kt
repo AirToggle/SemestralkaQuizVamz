@@ -36,6 +36,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.NavController
+import com.example.semestralka_quiz_geo.MainActivity
 import com.example.semestralka_quiz_geo.R
 import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
 import kotlinx.coroutines.CoroutineScope
@@ -115,6 +116,7 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                     CoroutineScope(Dispatchers.IO).launch {
                         uzivatel.ulozitUdaje(contextt)
                         Notifikacia(contextt, "", 2)
+                        MainActivity.Global.NevytvorenyUzivatel = false
                     }
                 }) {
                 Text(text = "Vytvor uživatela", fontSize = 16.sp)
@@ -126,6 +128,7 @@ fun Nastavenia(navController: NavController, uzivatel: UzivatelData = UzivatelDa
                 CoroutineScope(Dispatchers.IO).launch {
                     uzivatel.vymazatUdaje(contextt)
                     Notifikacia(contextt, "", 3)
+                    MainActivity.Global.NevytvorenyUzivatel = true
                 }
             }) {
                 Text(text = "Vymaž databázu", fontSize = 16.sp)
