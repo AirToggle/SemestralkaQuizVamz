@@ -30,7 +30,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.semestralka_quiz_geo.obrazovky.Encyklopedia
+import com.example.semestralka_quiz_geo.obrazovky.Encyklopedia.Encyklopedia
 import com.example.semestralka_quiz_geo.obrazovky.Hl_menu
 import com.example.semestralka_quiz_geo.obrazovky.Nastavenia
 import com.example.semestralka_quiz_geo.obrazovky.Quiz_Screen
