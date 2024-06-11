@@ -43,11 +43,6 @@ fun Encyklopedia(navController: NavController) {
         obsahy = viewModel.NacitajObsahy(context)
     }
 
-    if (obsahy != null) {
-        for (myObject in obsahy!!) {
-            Text(text = myObject.title)
-        }
-    }
 
 
 

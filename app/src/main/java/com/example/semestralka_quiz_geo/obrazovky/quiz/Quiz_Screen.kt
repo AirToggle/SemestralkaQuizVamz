@@ -24,8 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.semestralka_quiz_geo.Otazka.Otazka
 import com.example.semestralka_quiz_geo.R
 import com.example.semestralka_quiz_geo.Uzivatel.UzivatelData
+import com.example.semestralka_quiz_geo.obrazovky.Encyklopedia.ExpandableCard
 import com.example.semestralka_quiz_geo.obrazovky.quiz.Quiz_ScreenView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,7 +38,7 @@ import kotlinx.coroutines.launch
 fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelData()) {
     val context = LocalContext.current
     val viewModel: Quiz_ScreenView = viewModel()
-    val numbers: MutableList<Int> = mutableListOf()
+    val numbers: MutableList<Otazka> = mutableListOf()
 
     LaunchedEffect(Unit) {
         viewModel.loadQuestions(context)
@@ -55,24 +57,45 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
             .padding(top = if (isPortrait) 144.dp else 0.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            item { Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            item {
+             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(text = "No more questions!", fontSize = 24.sp)
-            } }
-
-            item { Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center, ) {
+            }
+        }
+            item {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center, ) {
                 Button(onClick = { navController.navigate("ResultScreen") }) {
-                    Text(text = "Výsledky", fontSize = 24.sp)
+                    Text(text = "Vysledky", fontSize = 24.sp)
                 }
-            } }
+            }
+
+            }
+            /*
+            for (myObject in questions) {
+                item {
+                    ExpandableCard(
+                        title = myObject.question,
+                        description = myObject.answer,
+                        foto = myObject.image_url,
+                        contextt = context
+
+                    )
+                }
+            }
+
+             */
         }
 
 
         help = true
         return
     }
+
     if (help) {
         navController.navigate("ResultScreen")
     }
+
+
 
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -184,7 +207,7 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
                                 CoroutineScope(Dispatchers.Main).launch {
                                     uzivatel.pridajPocetOtazok(context)
                                 }
-                                numbers.add(currentQuestionIndex)
+                                numbers.add(currentQuestion)
                             }
                             viewModel.nextQuestion()
                         },
@@ -211,7 +234,7 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
                                 CoroutineScope(Dispatchers.Main).launch {
                                     uzivatel.pridajPocetOtazok(context)
                                 }
-                                numbers.add(currentQuestionIndex)
+                                numbers.add(currentQuestion)
                             }
                             viewModel.nextQuestion()
                         },
@@ -246,7 +269,7 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
                                 CoroutineScope(Dispatchers.Main).launch {
                                     uzivatel.pridajPocetOtazok(context)
                                 }
-                                numbers.add(currentQuestionIndex)
+                                numbers.add(currentQuestion)
                             }
                             viewModel.nextQuestion()
                         },
@@ -272,7 +295,7 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
                                 CoroutineScope(Dispatchers.Main).launch {
                                     uzivatel.pridajPocetOtazok(context)
                                 }
-                                numbers.add(currentQuestionIndex)
+                                numbers.add(currentQuestion)
                             }
                             viewModel.nextQuestion()
                         },
@@ -293,4 +316,5 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
         }
     }
 }
+
 
