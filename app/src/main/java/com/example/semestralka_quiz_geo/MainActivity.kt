@@ -22,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,7 +50,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         var uzivatel = UzivatelData()
         val notifikacnyKanal = Notifikacia()
-        val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
         setContent {
             val context = this@MainActivity
             val hasNotificationPermission = remember {
@@ -96,6 +96,8 @@ class MainActivity : AppCompatActivity() {
             uzivatel = UzivatelData()
         }
 
+        saveStringToPreferences(this, "meno", uzivatel.name)
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
             requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), RC_NOTIFICATION)
@@ -124,6 +126,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelData()) {
     val configuration = LocalConfiguration.current
+    val context = LocalContext.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -140,7 +143,7 @@ fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelDa
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            Text(text = "Vitaj " + uzivatel.name, fontSize = 32.sp)
+            Text(text = "Vitaj " + getStringFromPreferences(context, "meno"), fontSize = 32.sp)
         }
             item {
             Button(
@@ -155,8 +158,16 @@ fun Obrazovka(navController: NavController, uzivatel : UzivatelData = UzivatelDa
     }
 }
 
-
-
+fun saveStringToPreferences(context: Context, key: String, value: String) {
+    val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putString(key, value)
+    editor.apply()
+}
+fun getStringFromPreferences(context: Context, key: String): String? {
+    val sharedPreferences = context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+    return sharedPreferences.getString(key, null)
+}
 
     @Preview(showBackground = true)
     @Composable

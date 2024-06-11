@@ -188,7 +188,7 @@ fun Quiz_Screen(navController: NavController, uzivatel: UzivatelData = UzivatelD
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                Text(text = currentQuestion.question, fontSize = 24.sp, textAlign = TextAlign.Center)
+                Text(text = currentQuestion.question, fontSize = 24.sp, textAlign = TextAlign.Center, color = Color.White,fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
             }
 
             item {
